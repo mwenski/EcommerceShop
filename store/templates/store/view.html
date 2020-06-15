@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="box-element">
-                <img class="thumbnail2" src="{% static 'images/placeholder.png' %}">
+                <img class="thumbnail2" src="{{product.image.url}}">
             </div>
             
         </div>
@@ -13,13 +13,13 @@
             <div class="box-element">
                 <a  class="btn btn-outline-dark" href="{% url 'store' %}">&#x2190; Wróć do sklepu</a>
                 <hr>
-                <h3>Produkt</h3>
+                <h3>{{product.name}}</h3>
                 <hr>
                 <div class="dane">
-                    <p>{% lorem 1 p random %}</p>
+                    <p>{{product.description}}</p>
                 </div>
-                <button  class="btn btn-outline-secondary add-btn">Dodaj do koszyka</button>
-                <h4 style="display: inline-block; float: right"><strong>20 zł</strong></h4>
+                <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Dodaj do koszyka</button>
+                <h4 style="display: inline-block; float: right"><strong>{{product.price}}zł</strong></h4>
             </div>
         </div>
     </div>

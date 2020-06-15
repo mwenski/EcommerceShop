@@ -10,7 +10,7 @@
                 <hr>
 
                 <button data-product={{product.id}} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Dodaj do koszyka</button>
-                <a class="btn btn-outline-success" href="{% url 'view' %}">Zobacz</a>
+                <a class="btn btn-outline-success" href="{%  url 'view' pk=product.pk %}">Zobacz</a>
                 <h4 style="display: inline-block; float: right"><strong>{{product.price|floatformat:2}}zł</strong></h4>
 
             </div>

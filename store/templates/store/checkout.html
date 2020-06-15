@@ -37,7 +37,13 @@
                     <hr>
                     <input id="form-button" class="btn btn-success btn-block" type="submit" value="Kupuję i płacę!">
                     <div class="box-element hidden" id="payment-info">
-                            <small>Paypal Options</small>
+                            <b>Zapłać tradycyjnie przelewem...</b><br>
+                            <b>Dane:</b><br>
+                            <b>Nazwa odbiorcy:</b> Sklep Projekt132150<br>
+                            <b>Adres:</b> Długa 99, 61-849 Poznań<br>
+                            <b>Nr konta:</b> 25 9816 2031 3145 3444 5420 8798<br>
+                            <b>Tytuł:</b>Zamówienie nr {{order.transaction_id}}<br>
+                            <b>...lub przez PayU</b><br>
                             <button id="make-payment">Płać</button>
                     </div>
                     
@@ -79,7 +85,7 @@
     })
 
     document.getElementById('make-payment').addEventListener('click', function(e){
-        submitFormData()
+       // submitFormData()
     })
     function submitFormData(){
         console.log('Payment button clicked')
@@ -112,6 +118,30 @@
             headers:{
                 'Content-Type':'application/json',
                 'X-CSRFToken':csrftoken,
+            },
+            body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}
+            )
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+            alert('Transaction completed');
+
+            cart = {}
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+            window.location.href = "{% url 'store' %}"
+        })
+    }
+
+    function Test1(){
+        var url = 'https://secure.snd.payu.com/api/v2_1/orders'
+
+        fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':'',
             },
             body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo}
             )

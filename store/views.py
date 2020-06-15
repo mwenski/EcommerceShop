@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 import json
 import datetime
@@ -97,6 +97,9 @@ def processOrder(request):
 
      return JsonResponse('Payment complete!', safe=False)
 
-def view(request):
-      context = {}
-      return render(request, 'store/view.html', context)
+def view(request, pk):
+     data = cartData(request)
+     cartItems = data['cartItems']
+     product = get_object_or_404(Product, pk=pk)
+     context = { 'cartItems': cartItems, 'product':product}
+     return render(request, 'store/view.html', context)
