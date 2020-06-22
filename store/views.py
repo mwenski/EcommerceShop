@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
+from urllib.request import Request, urlopen
+from urllib.parse import urlencode
 import json
 import datetime
+import requests
 from .models import *
 from . utils import cookieCart, cartData, guestOrder
 
@@ -60,6 +63,8 @@ def updateItem(request):
      if orderItem.quantity <= 0:
           orderItem.delete()
 
+     
+
      return JsonResponse('Item was added', safe=False)
 
 #from django.views.decorators.csrf import csrf_exempt
@@ -97,9 +102,15 @@ def processOrder(request):
 
      return JsonResponse('Payment complete!', safe=False)
 
+
 def view(request, pk):
      data = cartData(request)
      cartItems = data['cartItems']
      product = get_object_or_404(Product, pk=pk)
      context = { 'cartItems': cartItems, 'product':product}
      return render(request, 'store/view.html', context)
+
+def success(request):
+     data = json.load(request.body)
+     print(data)
+     return JsonResponse('Transaction ended', safe=False)
