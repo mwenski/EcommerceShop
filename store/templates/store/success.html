@@ -1,0 +1,20 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box-element">
+                <center>
+                    <br />
+                    <h1>Transakcja wykonana! 🤗</h1><br />
+                    <h3>Informujemy, że płatność powiodła się.<br /><br />
+                    Twoje zlecenie zostało zapisane i jest już przetwarzane. <br />
+                    Przesyłka z zamówionymi produktami niedługo będzie gotowa oraz dostarczona. <br /><br />
+                    Dziękujemy za wybór naszego sklepu i zapraszamy do kolejnych zakupów!</h3><br />
+
+                    <a class="btn btn-outline-success btn-lg btn-block" href="{%  url 'store' %}">Powrót do sklepu</a><br />
+                </center>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

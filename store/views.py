@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from urllib.request import Request, urlopen
 from urllib.parse import urlencode
 import json
@@ -111,6 +111,9 @@ def view(request, pk):
      return render(request, 'store/view.html', context)
 
 def success(request):
-     data = json.load(request.body)
-     print(data)
-     return JsonResponse('Transaction ended', safe=False)
+     data = cartData(request)
+     cartItems = data['cartItems']
+
+     context = {'cartItems': cartItems}
+     return render(request, 'store/success.html', context)
+     

@@ -1,5 +1,7 @@
 body{
 	background-color: hsl(0, 0%, 98%);
+	min-height: 100vh;
+	position: relative;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -34,7 +36,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .bg-dark{
-	background-color: #4f868c!important;
+	background-color: #0099ff!important;
 }
 
 #cart-icon{
@@ -47,7 +49,7 @@ h1,h2,h3,h4,h5,h6{
 	display: block;
 	text-align: center;
 	color:#fff;
-	background-color: red;
+	background-color: #ff6000;
 	width: 20px;
 	height: 25px;
 	border-radius: 50%;
@@ -104,4 +106,20 @@ h1,h2,h3,h4,h5,h6{
 
 .hidden{
 	display: none!important;
+}
+
+
+.row{
+	margin-bottom: 85px;
+}
+
+footer{
+	margin-top: 10px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: #efefef;
+	text-align: center;
 }
